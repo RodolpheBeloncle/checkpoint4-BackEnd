@@ -24,3 +24,6 @@ CREATE TABLE `WinePairings` (
     FOREIGN KEY (DisheId) REFERENCES Dishes(id) ON DELETE CASCADE
 );
 
+INSERT INTO `Wines` (`name`, `vintage`, `image`,`type`) VALUES ('Medoc','1999', 'myImg','red'),('Chassagne-Montrachet','2015', 'myImg2','white'),('Sauterne','1967', 'myImg3','sweet'),('Savoie','2019', 'myImg4','red'),('Collioure','2016', 'myImg5','white'),('Chassagne-Montrachet','2015', 'myImg6','white'),('rivesalte ambré','1967', 'myImg7','sweet'),('Banyuls','1967', 'myImg8','sweet'),('brachetto d acqui','2019', 'myImg9','sweet'),('Jura','2000', 'myImg5','white');
+INSERT INTO `Dishes` (`name`, `type`) VALUES ('lobster','starter'),('foie gras','starter'),('johndory','maincourse'),('beef','maincourse'),('Blue Cheese','cheesecourse'),('Comté Cheese','cheesecourse'),('foret noire','desert'),('charlotte aux fraises','desert'),('Poularde de Bresse','maincourse');
+INSERT INTO `WinePairings` (`WineId`, `DisheId`) VALUES (1,4),(2,3),(3,5),(10,6),(3,3),(4,3),(4,9),(5,3),(6,3),(6,6),(7,8),(8,8),(9,8),(10,3),(8,7),(3,2);
