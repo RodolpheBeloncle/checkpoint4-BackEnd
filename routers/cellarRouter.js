@@ -8,6 +8,11 @@ const match = require('../models/matchModel');
 const upload = multer({ dest: 'uploads/images' });
 
 
+cellarRouter.get('/search', async (req, res) => {
+    const [name] = await match.findWineMatch(req.query);
+    return res.json(name);
+  });
+
 cellarRouter.get('/', async (req, res) => {
   const [wines] = await cellar.findAllWines(req.query);
   return res.json(wines);
@@ -38,7 +43,7 @@ cellarRouter.post(
     }
 
     try {
-      const [{ insertId: id }] = await cellar.insertArticle(
+      const [{ insertId: id }] = await cellar.insertWine(
         newWine,
         req.file.path,
       );
@@ -56,7 +61,7 @@ cellarRouter.post(
 );
 
 cellarRouter.delete('/:id', async (req, res) => {
-  await cellar.deleteArticle(req.params.id);
+  await cellar.deleteWine(req.params.id);
   return res.status(204).json();
 });
 
@@ -76,11 +81,5 @@ cellarRouter.put(
   },
 );
 
-cellarRouter.get('/search/winematch', async (req, res) => {
-  const [match] = await match.findWineMatch(
-    req.query.term,
-  );
-  return res.json(match);
-});
 
 module.exports = cellarRouter;
