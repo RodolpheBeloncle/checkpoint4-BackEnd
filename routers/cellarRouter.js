@@ -65,6 +65,14 @@ cellarRouter.delete('/:id', async (req, res) => {
   return res.status(204).json();
 });
 
+cellarRouter.put('/quantity/:id', async (req, res) => {
+  const { quantity } = req.body;
+  
+
+  await cellar.updateQuantity(quantity, req.params.id);
+  return res.status(204).json({ message: 'quantities have been changed' });
+});
+
 cellarRouter.put('/:id', upload.single('image'), async (req, res) => {
   const { value: updateWine, error } = uploadSchemaWine.validate(req.body);
 
@@ -78,13 +86,7 @@ cellarRouter.put('/:id', upload.single('image'), async (req, res) => {
   return res.status(204).json({ message: 'your cellar have been updated' });
 });
 
-cellarRouter.put('/quantity/:id', async (req, res) => {
-  const { quantity: quantity } = req.body;
-  console.log(quantity);
 
-  await cellar.updateQuantity(quantity, req.params.id);
-  return res.status(204).json({ message: 'quantities have been changed' });
-});
 
 
 module.exports = cellarRouter;
