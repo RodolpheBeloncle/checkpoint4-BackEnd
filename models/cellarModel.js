@@ -37,10 +37,18 @@ const updateWine = (data, image, id) => {
   return dataBase.query('UPDATE Wines SET ? WHERE id = ?', [data, id]);
 };
 
+const updateQuantity = (quantity,id) => {
+  return dataBase.query('UPDATE Wines SET quantity = ? WHERE id = ?', [quantity,id]);
+};
+
+const sumOfBottles = () => dataBase.query('SELECT SUM(quantity) FROM Wines');
+
 module.exports = {
   findAllWines,
   findOneWineById,
   insertWine,
   deleteWine,
   updateWine,
+  updateQuantity,
+  sumOfBottles,
 };
