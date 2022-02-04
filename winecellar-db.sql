@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS `Wines`;
 DROP TABLE IF EXISTS `Dishes`;
 DROP TABLE IF EXISTS `WinePairings`;
+DROP TABLE IF EXISTS `WineMatch`;
 
 CREATE TABLE `Wines` (
     `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -22,6 +23,13 @@ CREATE TABLE `WinePairings` (
     `DisheId` INT NULL,
     FOREIGN KEY (WineId) REFERENCES Wines(id) ON DELETE CASCADE,
     FOREIGN KEY (DisheId) REFERENCES Dishes(id) ON DELETE CASCADE
+);
+
+CREATE TABLE `WineMatch` (
+    `dishId` INT NULL,
+    `wineId` INT NULL,
+    FOREIGN KEY (wineId) REFERENCES Wines(id) ON DELETE CASCADE,
+    FOREIGN KEY (dishId) REFERENCES Dishes(id) ON DELETE CASCADE
 );
 
 INSERT INTO `Wines` (`name`, `vintage`, `image`,`type`,`quantity`) VALUES ('Medoc','1999', 'myImg','red','0'),('Chassagne-Montrachet','2015', 'myImg2','white','1'),('Sauterne','1967', 'myImg3','sweet','2'),('Savoie','2019', 'myImg4','red','3'),('Collioure','2016', 'myImg5','white','6'),('Chassagne-Montrachet','2015', 'myImg6','white','9'),('rivesalte ambré','1967', 'myImg7','sweet','9'),('Banyuls','1967', 'myImg8','sweet','7'),('brachetto d acqui','2019', 'myImg9','sweet','0'),('Jura','2000', 'myImg5','white','5');

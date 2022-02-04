@@ -49,7 +49,7 @@ const updateQuantity = (quantity, id) => {
   ]);
 };
 
-const sumOfBottles = () => dataBase.query('SELECT SUM(quantity) FROM Wines');
+const sumOfBottles = () => dataBase.query('SELECT SUM(quantity) as total FROM Wines');
 
 module.exports = {
   findAllWines,
