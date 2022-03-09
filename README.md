@@ -16,7 +16,8 @@ npm install
 npm start
 ```
 ```shell
-mysql -u user -p database < winecellar.sql
+
+mysql -u root -p <winecellar databasename> < winecellar.sql
 ```
 
 
